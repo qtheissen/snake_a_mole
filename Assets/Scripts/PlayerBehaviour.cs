@@ -6,6 +6,7 @@ public class PlayerBehaviour : MonoBehaviour
 {
     
     Rigidbody2D rb;
+    SpriteRenderer spriteRenderer;
     public float moveSpeed;
     float currentMoveSpeed;
 
@@ -21,7 +22,9 @@ public class PlayerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Set component references
         rb = gameObject.GetComponent<Rigidbody2D>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         moveSpeedDiagonal = diagonalMultiplier * moveSpeed;
     }
@@ -31,6 +34,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         SetDirection();
         Move();
+        Animate();
     }
 
     void Move()
@@ -60,7 +64,19 @@ public class PlayerBehaviour : MonoBehaviour
             currentMoveSpeed = moveSpeed;
             
         }
+    }
+
+    void Animate()
+    {
+        // Flip player depending on which side the mouse is relative to the player sprite object
+        if (transform.InverseTransformPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)).x > 0)
+        {
+            spriteRenderer.flipX = false;
         
-        
+        }
+        else
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 }
