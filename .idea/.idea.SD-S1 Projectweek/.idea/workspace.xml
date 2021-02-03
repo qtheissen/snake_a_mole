@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="512db871-6897-4b32-bdae-0fbddbc33622" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SD-S1 Projectweek/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SD-S1 Projectweek/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" afterDir="false" />
     </list>
@@ -61,6 +62,9 @@
       <option name="presentableId" value="Default" />
       <updated>1612347185746</updated>
       <workItem from="1612347194400" duration="2641000" />
+      <workItem from="1612376073877" duration="475000" />
+      <workItem from="1612376860084" duration="710000" />
+      <workItem from="1612378909004" duration="442000" />
     </task>
     <servers />
   </component>
