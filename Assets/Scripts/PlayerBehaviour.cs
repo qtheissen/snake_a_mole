@@ -7,9 +7,14 @@ public class PlayerBehaviour : MonoBehaviour
     
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
+
+    // normal move speed, used when the player walks in a straight line towards any directions
     public float moveSpeed;
+
+    // actual move speed that gets applied to the player
     float currentMoveSpeed;
 
+    // bool to determine if the player is moving
     bool isMoving;
 
     [SerializeField]
@@ -32,6 +37,7 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Call separate functions to have cleaner code
         SetDirection();
         Move();
         Animate();
