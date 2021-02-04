@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         if (timeSeconds < 10) timeSecondsString = "0" + timeSeconds;
         else timeSecondsString = timeSeconds.ToString();
 
+        // Make a complete string with a separator for the ui to use
         string timerString = timeMinutesString + ":" + timeSecondsString;
 
         timerTMP.text = timerString;
