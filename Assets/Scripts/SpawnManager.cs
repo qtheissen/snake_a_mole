@@ -47,20 +47,28 @@ public class SpawnManager : MonoBehaviour
         return spawnPos - new Vector2(-gridSize/2, -gridSize/2);
     }
 
-    bool CheckPos(Vector2 pos) // Check if enemy at position would overlap anything
+    bool CheckPos(Vector2 pos, out bool a, out Color col) // Check if enemy at position would overlap anything
     {
         Vector2 size = enemyPrefab.transform.localScale;
         if (!(pos.x-size.x/2 >= -area.x/2 && pos.y-size.y/2 >= -area.y/2 && pos.x+size.x/2 <= area.x/2 && pos.y+size.y/2 <= area.y/2)) // Check if not in bounds
         {
-            return true;
+            print("Outside of box");
+            a = true;
+            col = Color.blue;
+            return a;
         }
         else if(Physics2D.OverlapBox(pos, enemyPrefab.transform.localScale, 0f)) // True if overlaps
         {
-            return true;
+            print("Overlaps uhoh");
+            a = true;
+            col = Color.yellow;
+            return a;
         }
         else
         {
-            return false;
+            a = true;
+            col = Color.red;
+            return a;
         }
     }
     
@@ -75,7 +83,11 @@ public class SpawnManager : MonoBehaviour
             {
                 spawnPos = GenerateSpawnPos();
 
-                if (!CheckPos(spawnPos)) // If generated position doesn't overlap anything stop loop
+                bool bo = false;
+                Color col = Color.red;
+                
+
+                if (!CheckPos(spawnPos, out bo, out col)) // If generated position doesn't overlap anything stop loop
                 {
                     succes = true;
                 }
@@ -83,7 +95,12 @@ public class SpawnManager : MonoBehaviour
 
             if (succes) // Dont spawn if failed to find spawnPos
             {
+                print("Spawning enemy");
                 Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            }
+            else
+            {
+                print("cant spawn enemy");
             }
             spawnTimer = spawnTime;
         }
