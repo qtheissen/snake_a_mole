@@ -1,112 +1,88 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
     public GameObject enemyPrefab;
 
-    // Timer for enemy spawning
-    float spawnTimer;
-
-    // Time it takes inbetween enemy spawns
+    // Time inbetween enemy spawns
     public float spawnTime;
 
     [Header("Spawn location:")]
     // Area where to spawn the enemy object
-    public Vector2 area;
+    public Vector2 spawnArea;
     
-    // Size of grid to spawn enemies
+    // Size of grid to spawn enemies on
     public float gridSize = 1f;
 
-    // Max amount of times the game should retry finding a new spawn pos for enemy before giving up
-    [Tooltip("Max amount of times the game should retry finding a new spawn pos for enemy before giving up")]
-    public int maxRegenSpawnPosTries = 2;
+    // Max attempts for finding a new spawn pos for enemy
+    [Tooltip("Max attempts for finding a new spawn pos for enemy")]
+    public int maxSpawnPosTries = 5;
     
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        SpawnEnemy();
+        StartCoroutine("SpawnEnemy"); // Start SpawnEnemy loop
     }
 
     Vector2 GenerateSpawnPos()
     {
-        // Generate point in area
-        Vector2 spawnPos = new Vector2(Random.Range(-area.x/2, area.x/2), Random.Range(-area.y/2, area.y/2));
+        // Generate point in spawnArea
+        Vector2 spawnPos = new Vector2(Random.Range(-spawnArea.x/2, spawnArea.x/2), Random.Range(-spawnArea.y/2, spawnArea.y/2));
+
+        Vector2 gridOffset = Vector2.zero;
+        if (spawnArea.x % 2 < 1) // If x is even add x offset
+        {
+            gridOffset+= new Vector2(gridSize/2,0);
+        }
+        if (spawnArea.y % 2 < 1) // If y is even add y offset
+        {
+            gridOffset+= new Vector2(0, gridSize/2);
+        }
+        
+        // Offset so that the area of spawnArea is the same as the amount of enemies
+        spawnPos += gridOffset;
         
         // Round position, divide by gridSize and multiply afterwards for changeable gridSize
         spawnPos = new Vector2(Mathf.Round(spawnPos.x/gridSize)*gridSize,Mathf.Round(spawnPos.y/gridSize)*gridSize);
-
-        // Return but first offset by halve of its size so it is inside the grid squares not on the grid corners
-        return spawnPos - new Vector2(-gridSize/2, -gridSize/2);
+        
+        return spawnPos -gridOffset; // Remove offset after rounding so that grid is offset and not spawnPos
     }
 
-    bool CheckPos(Vector2 pos, out bool a, out Color col) // Check if enemy at position would overlap anything
+    IEnumerator SpawnEnemy()
     {
-        Vector2 size = enemyPrefab.transform.localScale;
-        if (!(pos.x-size.x/2 >= -area.x/2 && pos.y-size.y/2 >= -area.y/2 && pos.x+size.x/2 <= area.x/2 && pos.y+size.y/2 <= area.y/2)) // Check if not in bounds
+        Vector2 spawnPos = Vector2.zero;
+        
+        bool succes = false;
+        Vector2 enemySize = enemyPrefab.transform.localScale; // Put in variable for more readable code
+        for(int attempt = 0; attempt <= maxSpawnPosTries && !succes; attempt++) // Repeat until run out of attempts or succes
         {
-            print("Outside of box");
-            a = true;
-            col = Color.blue;
-            return a;
+            spawnPos = GenerateSpawnPos();
+
+            // Check for colliders in box
+            succes = !Physics2D.OverlapBox(spawnPos, enemySize, 0);
         }
-        else if(Physics2D.OverlapBox(pos, enemyPrefab.transform.localScale, 0f)) // True if overlaps
+
+        if (succes) // Dont spawn if failed to find spawnPos
         {
-            print("Overlaps uhoh");
-            a = true;
-            col = Color.yellow;
-            return a;
+            Instantiate(enemyPrefab, spawnPos, Quaternion.identity, transform);
         }
-        else
-        {
-            a = true;
-            col = Color.red;
-            return a;
-        }
+        
+        yield return new WaitForSeconds(spawnTime);
+        StartCoroutine(SpawnEnemy()); // Loop after spawnTime
     }
-    
-    void SpawnEnemy()
+
+    // Draw gizmo to show how big spawnArea is when selected (debug)
+    #if UNITY_EDITOR // Remove this code in builds
+    private void OnDrawGizmosSelected()
     {
-        if (spawnTimer <= 0)
-        {
-            Vector2 spawnPos = Vector2.zero;
-            
-            bool succes = false;
-            for(int attempt = 0; attempt <= maxRegenSpawnPosTries || !succes; attempt++)
-            {
-                spawnPos = GenerateSpawnPos();
-
-                bool bo = false;
-                Color col = Color.red;
-                
-
-                if (!CheckPos(spawnPos, out bo, out col)) // If generated position doesn't overlap anything stop loop
-                {
-                    succes = true;
-                }
-            }
-
-            if (succes) // Dont spawn if failed to find spawnPos
-            {
-                print("Spawning enemy");
-                Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-            }
-            else
-            {
-                print("cant spawn enemy");
-            }
-            spawnTimer = spawnTime;
-        }
-        else{
-            spawnTimer -= Time.deltaTime;
-        }
-            
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireCube(transform.position, spawnArea);
     }
+    #endif
 }
+
