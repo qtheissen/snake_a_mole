@@ -603,6 +603,7 @@ GameObject:
   - component: {fileID: 920426143}
   - component: {fileID: 920426145}
   - component: {fileID: 920426144}
+  - component: {fileID: 920426146}
   m_Layer: 5
   m_Name: End Screen
   m_TagString: Untagged
@@ -672,6 +673,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920426142}
   m_CullTransparentMesh: 1
+--- !u!114 &920426146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920426142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2f0b4996cf3fd4da30645775e2d7fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &931997937
 GameObject:
   m_ObjectHideFlags: 0
