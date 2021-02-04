@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="512db871-6897-4b32-bdae-0fbddbc33622" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SD-S1 Projectweek/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SD-S1 Projectweek/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SD-S1 Projectweek/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SD-S1 Projectweek/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EndScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EndScreen.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +18,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EndScreen.cs" />
       </list>
     </option>
   </component>
@@ -65,6 +68,9 @@
       <workItem from="1612378909004" duration="442000" />
       <workItem from="1612425124624" duration="6975000" />
       <workItem from="1612432239927" duration="254000" />
+      <workItem from="1612434882060" duration="3000" />
+      <workItem from="1612436071607" duration="457000" />
+      <workItem from="1612456825106" duration="8342000" />
     </task>
     <servers />
   </component>
