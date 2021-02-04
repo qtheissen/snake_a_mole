@@ -277,8 +277,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3, y: 0.49}
   m_AnchorMax: {x: 0.7, y: 0.59}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -2.5, y: 0}
+  m_SizeDelta: {x: 5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &109467659
 MonoBehaviour:
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 46
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.65
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -760,6 +760,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe2f0b4996cf3fd4da30645775e2d7fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  background: {fileID: 920426144}
+  gameOver: {fileID: 294923892}
+  points: {fileID: 109467658}
+  buttons: {fileID: 1022660752}
+  tweenFrameRate: 60
+  bTr0: {r: 0, g: 0, b: 0, a: 0.65}
+  bTr1: {r: 0, g: 0, b: 0, a: 0}
+  gOD0: 0
+  gOD1: -1
+  pMi0: {x: 0.3, y: 0.49}
+  pMa0: {x: 0.7, y: 0.59}
+  pMi1: {x: 1.3, y: 0.49}
+  pMa1: {x: 1.7, y: 0.59}
+  bMi0: {x: 0.35, y: 0.2}
+  bMa0: {x: 0.65, y: 0.375}
+  bMi1: {x: -0.65, y: 0.2}
+  bMa1: {x: -0.35, y: 0.375}
 --- !u!1 &931997937
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +861,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.6
+  m_fontSize: 18
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1111,7 +1128,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.65
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1322,7 +1339,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.6
+  m_fontSize: 18
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1804,7 +1821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 5524340456127058164, guid: 7e9abb98529a6df4bb8287f9a5f37d25, type: 3}
   spawnTime: 5
-  spawnArea: {x: 35, y: 15}
+  spawnArea: {x: 28, y: 16}
   gridSize: 1
   maxSpawnPosTries: 5
 --- !u!4 &1784003860
