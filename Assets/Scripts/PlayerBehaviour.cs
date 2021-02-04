@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    
+    // Get reference to rigidbody component
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
 
@@ -31,6 +31,7 @@ public class PlayerBehaviour : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
+        // Set the diagonal move speed according to the specified multiplier
         moveSpeedDiagonal = diagonalMultiplier * moveSpeed;
     }
 
@@ -45,11 +46,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Move()
     {
+        // Update player movement through rigidbody depending on direction
         rb.velocity = new Vector2(direction.x * currentMoveSpeed, direction.y * currentMoveSpeed);
     }
 
     void SetDirection()
     {
+        // Determine if the player is using inputs to ove their character
         if(direction.x != 0 || direction.y != 0)
         {
             isMoving = true;
@@ -62,6 +65,8 @@ public class PlayerBehaviour : MonoBehaviour
         direction.x = Input.GetAxisRaw("Horizontal");
         direction.y = Input.GetAxisRaw("Vertical");
 
+        // if the player is putting in vertical and horizontal movement at the same time
+        // set their current move speed to the diagonal move speed
         if (direction.y != 0 && direction.x != 0)
         {
             currentMoveSpeed = moveSpeedDiagonal;
