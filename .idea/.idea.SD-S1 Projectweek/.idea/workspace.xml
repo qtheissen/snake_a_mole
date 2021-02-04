@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="512db871-6897-4b32-bdae-0fbddbc33622" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SD-S1 Projectweek/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SD-S1 Projectweek/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +63,8 @@
       <workItem from="1612376073877" duration="475000" />
       <workItem from="1612376860084" duration="710000" />
       <workItem from="1612378909004" duration="442000" />
+      <workItem from="1612425124624" duration="6975000" />
+      <workItem from="1612432239927" duration="254000" />
     </task>
     <servers />
   </component>
@@ -77,6 +77,10 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="371" y="0" width="637" height="801" key="find.popup" timestamp="1612431167190">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="371" y="0" width="637" height="801" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1612431167190" />
     <state x="431" y="155" key="search.everywhere.popup" timestamp="1612347529510">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
