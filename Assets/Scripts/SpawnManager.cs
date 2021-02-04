@@ -10,11 +10,11 @@ public class SpawnManager : MonoBehaviour
     public GameObject enemyPrefab;
 
     // Time inbetween enemy spawns
-    public float spawnTime;
+    public float spawnTime = 1f;
 
     [Header("Spawn location:")]
     // Area where to spawn the enemy object
-    public Vector2 spawnArea;
+    public Vector2 spawnArea = new Vector2(22, 10);
     
     // Size of grid to spawn enemies on
     public float gridSize = 1f;
