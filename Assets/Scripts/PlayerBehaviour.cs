@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    GameManager gameManager;
     // Get reference to rigidbody component
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
+
+    
 
     // normal move speed, used when the player walks in a straight line towards any directions
     public float moveSpeed;
@@ -27,6 +30,7 @@ public class PlayerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         // Set component references
         rb = gameObject.GetComponent<Rigidbody2D>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -88,6 +92,14 @@ public class PlayerBehaviour : MonoBehaviour
         else
         {
             spriteRenderer.flipX = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Mole"))
+        {
+            Destroy(other.gameObject);
+            gameManager.AddScore(1);
         }
     }
 }
