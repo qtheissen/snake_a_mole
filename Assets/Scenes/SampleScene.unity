@@ -243,8 +243,13 @@ Transform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &109467657
 GameObject:
+=======
+--- !u!61 &34081843
+BoxCollider2D:
+>>>>>>> 2cc31dcd1da63ac4c996fe56af3aa7d9da54aac4
 =======
 --- !u!61 &34081843
 BoxCollider2D:
@@ -253,6 +258,7 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
   serializedVersion: 6
   m_Component:
@@ -460,6 +466,8 @@ CanvasRenderer:
   m_GameObject: {fileID: 294923890}
   m_CullTransparentMesh: 1
 =======
+=======
+>>>>>>> 2cc31dcd1da63ac4c996fe56af3aa7d9da54aac4
   m_GameObject: {fileID: 34081838}
   m_Enabled: 1
   m_Density: 1
@@ -480,6 +488,9 @@ CanvasRenderer:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0625}
   m_EdgeRadius: 0
+<<<<<<< HEAD
+>>>>>>> 2cc31dcd1da63ac4c996fe56af3aa7d9da54aac4
+=======
 >>>>>>> 2cc31dcd1da63ac4c996fe56af3aa7d9da54aac4
 --- !u!1 &519420028
 GameObject:
@@ -1850,8 +1861,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 5524340456127058164, guid: 7e9abb98529a6df4bb8287f9a5f37d25, type: 3}
 <<<<<<< HEAD
+<<<<<<< HEAD
   spawnTime: 5
   spawnArea: {x: 28, y: 16}
+=======
+  spawnTime: 20
+  spawnArea: {x: 27, y: 14}
+>>>>>>> 2cc31dcd1da63ac4c996fe56af3aa7d9da54aac4
 =======
   spawnTime: 20
   spawnArea: {x: 27, y: 14}
@@ -1966,7 +1982,11 @@ RectTransform:
   - {fileID: 1392665717}
   - {fileID: 1721289282}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 920426143}
+=======
+  - {fileID: 2026444750}
+>>>>>>> 2cc31dcd1da63ac4c996fe56af3aa7d9da54aac4
 =======
   - {fileID: 2026444750}
 >>>>>>> 2cc31dcd1da63ac4c996fe56af3aa7d9da54aac4
@@ -2158,7 +2178,11 @@ MonoBehaviour:
   score: 0
   scoreCounter: {fileID: 1721289281}
 <<<<<<< HEAD
+<<<<<<< HEAD
   timer: {fileID: 0}
+=======
+  timer: {fileID: 2026444747}
+>>>>>>> 2cc31dcd1da63ac4c996fe56af3aa7d9da54aac4
 =======
   timer: {fileID: 2026444747}
 >>>>>>> 2cc31dcd1da63ac4c996fe56af3aa7d9da54aac4
