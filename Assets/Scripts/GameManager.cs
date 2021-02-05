@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     // This is the total time left in seconds for the game
     public float totalTimeSeconds = 100f;
 
+    // How much time you have left at the start of the game
+    public float gameLengthSeconds = 100f;
+
     void Start()
     {
         // Get TMP component from our scorecounter gameobject
