@@ -82,7 +82,7 @@ public class SpawnManager : MonoBehaviour
             Instantiate(enemyPrefab, spawnPos, Quaternion.identity, transform);
         }
 
-        if (gameManager.gameLengthSeconds > 0) // Dont loop when no more time left
+        if (!gameManager.gameOver) // Only loop if not gameOver
         {
             yield return new WaitForSeconds(spawnTime);
             StartCoroutine(SpawnEnemy()); // Loop after spawnTime
