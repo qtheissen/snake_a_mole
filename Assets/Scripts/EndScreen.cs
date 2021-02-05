@@ -38,6 +38,11 @@ public class EndScreen : MonoBehaviour
     public Vector2 bMi1 = new Vector2(1.35f, .2f); // buttons Anchor Min 1 (hidden)
     public Vector2 bMa1 = new Vector2(1.65f, .375f); // buttons Anchor Max 1 (hidden)
 
+    private void Start()
+    {
+        QuickHideEndScreen(); // Hide end screen at the beginning
+    }
+
     public void ShowEndScreen()
     {
         QuickHideEndScreen(); // Hide end screen before showing with tweens
