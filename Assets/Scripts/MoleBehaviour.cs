@@ -8,6 +8,7 @@ public class MoleBehaviour : MonoBehaviour
     SpriteRenderer spr;
     SpawnManager spawnManager;
     GameManager gameManager;
+    Animator anim;
 
     Vector2 goalLocation;
     public float moveSpeed = 10;
@@ -15,6 +16,8 @@ public class MoleBehaviour : MonoBehaviour
     public float exposedTime = 5;
     float exposedTimer = 5;
     float goalDistance;
+
+    bool canMove;
     
 
     public enum State {exposed, burrowed, ball, hurt};
@@ -30,10 +33,12 @@ public class MoleBehaviour : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         spr = gameObject.GetComponent<SpriteRenderer>();
+        anim = gameObject.GetComponent<Animator>();
 
         spawnManager = FindObjectOfType<SpawnManager>();
 
         gameManager = FindObjectOfType<GameManager>();
+        
     }
 
     // Update is called once per frame
@@ -52,8 +57,10 @@ public class MoleBehaviour : MonoBehaviour
                 // Code to be executed when switched to this new state
                 if(oldState != state)
                 {
-                    // TODO: Play unburrow animation
-                    spr.color = Color.red;
+                    // Dont allow player to move anymore
+                    canMove = false;
+                    // Play unburrow animation
+                    anim.SetTrigger("appear");
 
                     // Reset the exposed timer
                     exposedTimer = exposedTime;
@@ -77,8 +84,7 @@ public class MoleBehaviour : MonoBehaviour
                 // Code to be executed when switched to this new state
                 if(oldState != state)
                 {
-                    // TODO: Play burrow animation
-                    spr.color = Color.gray;
+                    anim.SetTrigger("burrow");
 
                     // Function that picks a place for the mole to move to
                     PickGoal(maxDistance);
@@ -89,7 +95,12 @@ public class MoleBehaviour : MonoBehaviour
                 // Move the mole if they are not at their goal location
                 if(new Vector2(transform.position.x, transform.position.y) != goalLocation)
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, goalLocation, moveSpeed * Time.deltaTime);
+                    // Only move the mole if canMove is true;
+                    if(canMove)
+                    {
+                        transform.position = Vector2.MoveTowards(transform.position, goalLocation, moveSpeed * Time.deltaTime);
+                    }
+                    
                 }
                 else{
                     // Set the state to switch to
@@ -121,6 +132,6 @@ public class MoleBehaviour : MonoBehaviour
     // Function used from an animation event to only allow the mole to move once they are underground
     public void AllowMove()
     {
-
+        canMove = true;
     }
 }
