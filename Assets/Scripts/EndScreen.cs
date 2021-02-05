@@ -11,6 +11,7 @@ public class EndScreen : MonoBehaviour
     public Image background;
     public TextMeshProUGUI gameOver;
     public RectTransform points;
+    public TextMeshProUGUI scoreText;
     public RectTransform buttons;
 
     [Space(10)]
@@ -43,10 +44,12 @@ public class EndScreen : MonoBehaviour
         QuickHideEndScreen(); // Hide end screen at the beginning
     }
 
-    public void ShowEndScreen()
+    public void ShowEndScreen(float score)
     {
         QuickHideEndScreen(); // Hide end screen before showing with tweens
 
+        scoreText.text = "Score: " + score; // Change text to display end score
+        
         StartCoroutine(ShowEndScreenCoroutine()); // Coroutine for pauses between coroutines
     }
 
