@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Function called from outside this class, when called update the score and score ui
-    public void UpdateScore(int amount)
+    public void AddScore(int amount)
     {
         score += amount;
         scoreCounterTMP.text = score.ToString();

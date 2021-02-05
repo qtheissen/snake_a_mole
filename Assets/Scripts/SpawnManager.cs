@@ -29,7 +29,7 @@ public class SpawnManager : MonoBehaviour
         StartCoroutine("SpawnEnemy"); // Start SpawnEnemy loop
     }
 
-    Vector2 GenerateSpawnPos()
+    public Vector2 GenerateSpawnPos()
     {
         // Generate point in spawnArea
         Vector2 spawnPos = new Vector2(Random.Range(-spawnArea.x/2, spawnArea.x/2), Random.Range(-spawnArea.y/2, spawnArea.y/2));
