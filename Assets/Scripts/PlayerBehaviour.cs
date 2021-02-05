@@ -8,6 +8,7 @@ public class PlayerBehaviour : MonoBehaviour
     // Get reference to rigidbody component
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
+    Animator anim;
 
     
 
@@ -34,6 +35,7 @@ public class PlayerBehaviour : MonoBehaviour
         // Set component references
         rb = gameObject.GetComponent<Rigidbody2D>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        anim = gameObject.GetComponent<Animator>();
 
         // Set the diagonal move speed according to the specified multiplier
         moveSpeedDiagonal = diagonalMultiplier * moveSpeed;
@@ -92,7 +94,17 @@ public class PlayerBehaviour : MonoBehaviour
         {
             spriteRenderer.flipX = true;
         }
+
+        if(isMoving)
+        {
+            anim.SetBool("walking", true);
+        }
+        else{
+            anim.SetBool("walking", false);
+        }
     }
+
+    
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Mole"))
