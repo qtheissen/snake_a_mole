@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Function called from outside this class, when called update the score and score ui
-    public void UpdateScore(int amount)
+    public void AddScore(int amount)
     {
         score += amount;
         scoreCounterTMP.text = score.ToString();
@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         if (timeSeconds < 10) timeSecondsString = "0" + timeSeconds;
         else timeSecondsString = timeSeconds.ToString();
 
+        // Make a complete string with a separator for the ui to use
         string timerString = timeMinutesString + ":" + timeSecondsString;
 
         timerTMP.text = timerString;
