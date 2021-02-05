@@ -6,7 +6,9 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="EndScreen.cs" t="Include" />
+          <e p="EndScreenButtons.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
+          <e p="MoleBehaviour.cs" t="Include" />
           <e p="PlayerBehaviour.cs" t="Include" />
           <e p="SpawnManager.cs" t="Include" />
         </e>
