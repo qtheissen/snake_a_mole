@@ -87,7 +87,6 @@ public class PlayerBehaviour : MonoBehaviour
         if (transform.InverseTransformPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)).x > 0)
         {
             spriteRenderer.flipX = false;
-        
         }
         else
         {

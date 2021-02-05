@@ -11,6 +11,7 @@ public class EndScreen : MonoBehaviour
     public Image background;
     public TextMeshProUGUI gameOver;
     public RectTransform points;
+    public TextMeshProUGUI scoreText;
     public RectTransform buttons;
 
     [Space(10)]
@@ -38,17 +39,22 @@ public class EndScreen : MonoBehaviour
     public Vector2 bMi1 = new Vector2(1.35f, .2f); // buttons Anchor Min 1 (hidden)
     public Vector2 bMa1 = new Vector2(1.65f, .375f); // buttons Anchor Max 1 (hidden)
 
-    public void ShowEndScreen()
+    private void Start()
+    {
+        QuickHideEndScreen(); // Hide end screen at the beginning
+    }
+
+    public void ShowEndScreen(float score)
     {
         QuickHideEndScreen(); // Hide end screen before showing with tweens
 
+        scoreText.text = "Score: " + score; // Change text to display end score
+        
         StartCoroutine(ShowEndScreenCoroutine()); // Coroutine for pauses between coroutines
     }
 
     IEnumerator ShowEndScreenCoroutine() // Coroutine for pauses between coroutines
     {
-        gameObject.SetActive(true); // Reenable end screen because it could be disabled
-        
         StartCoroutine(TweenBackground(1.5f, bTr1, bTr0)); // Show background
         
         yield return new WaitForSeconds(1); // Start dilating game over before background finished
@@ -77,8 +83,6 @@ public class EndScreen : MonoBehaviour
 
         buttons.anchorMin = bMi1;
         buttons.anchorMax = bMa1;
-        
-        gameObject.SetActive(false); // Disable end screen for ¿performance?
     }
 
     public void QuickShowEndScreen()
@@ -92,8 +96,6 @@ public class EndScreen : MonoBehaviour
 
         buttons.anchorMin = bMi0;
         buttons.anchorMax = bMa0;
-
-        gameObject.SetActive(true); // Reenable end screen because it could be disabled
     }
     
     public void HideEndScreen()
@@ -118,9 +120,6 @@ public class EndScreen : MonoBehaviour
         StartCoroutine(TweenGameOver(1f, gOD0, gOD1)); // Hide game over faster than background
         
         StartCoroutine(TweenBackground(1.25f, bTr0, bTr1)); // Hide background slower than game over text
-        
-        yield return new WaitForSeconds(1.25f);
-        gameObject.SetActive(false); // Disable end screen for ¿performance? after all tweens finished
     }
 
     IEnumerator TweenBackground(float time, Color from, Color to)

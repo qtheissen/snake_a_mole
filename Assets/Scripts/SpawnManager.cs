@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
+    public Camera camera; // Used to resize play area
+    public GameManager gameManager; 
     public GameObject enemyPrefab;
 
     // Time inbetween enemy spawns
@@ -25,6 +27,14 @@ public class SpawnManager : MonoBehaviour
     
     // Start is called before the first frame update
     void Start()
+    {
+        // Resize spawn area to camera size (and floor so enemies can't stick outside of the camera's view)
+        spawnArea = new Vector2(Mathf.Floor(camera.orthographicSize*2* camera.aspect),Mathf.Floor(camera.orthographicSize*2));
+
+        StartGame(); // Start Game
+    }
+
+    public void StartGame() // Public function so other scripts can acces
     {
         StartCoroutine("SpawnEnemy"); // Start SpawnEnemy loop
     }
@@ -71,9 +81,12 @@ public class SpawnManager : MonoBehaviour
         {
             Instantiate(enemyPrefab, spawnPos, Quaternion.identity, transform);
         }
-        
-        yield return new WaitForSeconds(spawnTime);
-        StartCoroutine(SpawnEnemy()); // Loop after spawnTime
+
+        if (!gameManager.gameOver) // Only loop if not gameOver
+        {
+            yield return new WaitForSeconds(spawnTime);
+            StartCoroutine(SpawnEnemy()); // Loop after spawnTime
+        }
     }
 
     // Draw gizmo to show how big spawnArea is when selected (debug)
