@@ -20,7 +20,10 @@ public class MoleBehaviour : MonoBehaviour
     public enum State {exposed, burrowed, ball, hurt};
     [SerializeField]
     public State state = State.exposed;
+
+    // Stores the old state so the state machine knows what the state in the previous frame was
     State oldState;
+    // The state the mole is to switch to at the end of a frame
     State stateToSwitch;
     // Start is called before the first frame update
     void Start()
@@ -39,11 +42,6 @@ public class MoleBehaviour : MonoBehaviour
         Behaviour();
     }
 
-    
-    void SetStates()
-    {
-
-    }
 
     // State specific behaviour
     void Behaviour()
@@ -60,16 +58,18 @@ public class MoleBehaviour : MonoBehaviour
                     // Reset the exposed timer
                     exposedTimer = exposedTime;
                 }
+                // Count down the exposed timer
                 if (exposedTimer > 0)
                 {
                     exposedTimer -= Time.deltaTime;
                 }
                 else{
-                    // Switch to burrowed state
+                    // Switch to burrowed state when exposed timer is over
                     stateToSwitch = State.burrowed;
                 }
 
                 oldState = state;
+                // Set the actual state to the switch state
                 state = stateToSwitch;
                 break;
 
@@ -86,21 +86,25 @@ public class MoleBehaviour : MonoBehaviour
                     
                 }
 
+                // Move the mole if they are not at their goal location
                 if(new Vector2(transform.position.x, transform.position.y) != goalLocation)
                 {
                     transform.position = Vector2.MoveTowards(transform.position, goalLocation, moveSpeed * Time.deltaTime);
                 }
                 else{
+                    // Set the state to switch to
                     stateToSwitch = State.exposed;
                 }
                 
                 oldState = state;
+                // Set the actual state to the switch state
                 state = stateToSwitch;
                 break;
 
         }
     }
 
+    // Function that returns a vector2 goal location within the grid used for spawning
     Vector2 PickGoal(float distance)
     {
         goalDistance = 9999;
@@ -112,5 +116,11 @@ public class MoleBehaviour : MonoBehaviour
         }
             
         return goalLocation;
+    }
+
+    // Function used from an animation event to only allow the mole to move once they are underground
+    public void AllowMove()
+    {
+
     }
 }
