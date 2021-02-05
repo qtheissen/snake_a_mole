@@ -11,6 +11,12 @@ public class GameManager : MonoBehaviour
     private TMP_Text scoreCounterTMP;
     private TMP_Text timerTMP;
 
+    [HideInInspector] // Bool to keep track of game over (not to be edited in inspector)
+    public bool gameOver = false;
+    
+    // For end screen animation
+    public EndScreen endScreenUI;
+
     // This is the total time left in seconds for the game
     public float totalTimeSeconds = 100f;
 
@@ -36,7 +42,18 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Timer();
-        UpdateTimer();
+        if (!gameOver) // Only update timer when game is not over
+        {
+            UpdateTimer();
+        }
+
+        if (totalTimeSeconds < 0 && !gameOver) // Dont game over if already game over
+        {
+            gameOver = true;
+            endScreenUI.ShowEndScreen(score); // Game over ui
+
+            totalTimeSeconds = 0; // Set timer to 0 so it doesn't go negative
+        }
     }
 
     void Timer()
